@@ -23,13 +23,13 @@ builders:
   #   combine the parts from each builder into one part file.
 
 
-  property_sqfentity_forms:
-    import: "package:sqfentity_gen/builder.dart"
-    builder_factories: ["sqfentityFormBuilder"]
-    build_extensions: {".dart": [".g.view.dart"]}
-    auto_apply: dependents
-    build_to: source
-    applies_builders: ["source_gen|combining_builder"]
+  # property_sqfentity_forms:
+  #   import: "package:sqfentity_gen/builder.dart"
+  #   builder_factories: ["sqfentityFormBuilder"]
+  #   build_extensions: {".dart": [".g.view.dart"]}
+  #   auto_apply: dependents
+  #   build_to: source
+  #   applies_builders: ["source_gen|combining_builder"]
     
 
   property_sqfentity:

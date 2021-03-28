@@ -23,7 +23,7 @@ class SqfEntityGenerator extends GeneratorForAnnotation<SqfEntityBuilder> {
    //  return '''/* MODEL -> ${model.toString()} */''';
 
     final instanceName =
-        element.toString().replaceAll('SqfEntityModel', '').trim();
+         element.toString().replaceAll('SqfEntityModel', '').replaceAll('*', '').trim();
     print('SQFENTITY GENERATOR STARTED... instance Of:$instanceName');
     final builder = SqfEntityModelBuilder(model, instanceName);
     print(
@@ -40,9 +40,9 @@ class SqfEntityGenerator extends GeneratorForAnnotation<SqfEntityBuilder> {
           ..writeln(SqfEntityConverter(dbModel).createEntites())
           ..printToDebug(
               '${dbModel.modelName} converted to Entities successfully')
-          ..writeln(SqfEntityConverter(dbModel).createControllers())
-          ..printToDebug(
-              '${dbModel.modelName} converted to Controller successfully')
+          // ..writeln(SqfEntityConverter(dbModel).createControllers())
+          // ..printToDebug(
+          //     '${dbModel.modelName} converted to Controller successfully')
 
         //..writeln('*/') //  write output as commented to see what is wrong
         ;

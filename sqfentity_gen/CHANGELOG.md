@@ -1,10 +1,5 @@
-## 1.5.0-nullsafety.0+5
-some bugs fixed
-
-## 1.5.0-nullsafety.0
-
-1. Migrated to null safety, min SDK is 2.12.0.
-
+## 1.4.0+2
+fixed the **NoSuchMethodError: The getter 'index' was called on null** after upgrading the package build_runner to 1.10.3
 
 ## 1.4.0
 
@@ -14,14 +9,12 @@ some bugs fixed
 
 3. Added a new method named post() and postUrl() to post json to specified url with headers
 
-4. Added VIEW support
-
-### How to use method post() ?
+## How to use?
 
 First  Define the 'Todo' constant as SqfEntityTable and generate your model
 
 
-    const tableTodo = SqfEntityTable(
+   const tableTodo = SqfEntityTable(
     tableName: 'todos',
     primaryKeyName: 'id',
     primaryKeyType: PrimaryKeyType.integer_unique,
@@ -46,8 +39,7 @@ using:
             'Authorization' : 'Basic your_api_token_here'
             });
 
-### How to define a VIEW?
-
+4. Added VIEW support
 You can define views like below:
 
 
@@ -90,7 +82,6 @@ Result:
       flutter: {Name: Fast As a Shark, album: Restless and Wild, media: Protected AAC audio file, genres: Rock, TrackId: 3}
       flutter: {Name: Restless and Wild, album: Restless and Wild, media: Protected AAC audio file, genres: Rock, TrackId: 4}
       flutter: {Name: Princess of the Dawn, album: Restless and Wild, media: Protected AAC audio file, genres: Rock, TrackId: 5}
-
 
 ## 1.3.5+7
 fixed [issue #121](https://github.com/hhtokpinar/sqfEntity/issues/121) 
