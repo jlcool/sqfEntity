@@ -114,7 +114,7 @@ class SqfEntityProvider extends SqfEntityModelBase {
   }
 
   Future<void> close() async {
-    if (_dbMap[_dbModel.databaseName].isOpen) {
+    if (_dbMap[_dbModel.databaseName]?.isOpen ?? false) {
       _dbMap[_dbModel.databaseName].close();
       _dbMap[_dbModel.databaseName] = null;
     }
