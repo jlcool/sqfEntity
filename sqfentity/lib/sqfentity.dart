@@ -19,11 +19,11 @@
 import 'dart:async' show Future;
 import 'dart:convert';
 import 'dart:io';
+
 import 'package:flutter/services.dart';
 import 'package:sqfentity/sqfentity_connection.dart';
 import 'package:sqfentity/sqfentity_connection_base.dart';
 import 'package:sqfentity/sqfentity_connection_ffi.dart';
-
 import 'package:sqfentity_gen/sqfentity_gen.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -111,6 +111,13 @@ class SqfEntityProvider extends SqfEntityModelBase {
   Future<void> writeDatabase(ByteData data) async {
     _dbMap[_dbModel.databaseName] = null;
     await _connectionBase.writeDatabase(data);
+  }
+
+  Future<void> close() async {
+    if (_dbMap[_dbModel.databaseName].isOpen) {
+      _dbMap[_dbModel.databaseName].close();
+      _dbMap[_dbModel.databaseName] = null;
+    }
   }
 
   Future<dynamic> getById(List<dynamic> ids) async {
@@ -719,6 +726,10 @@ ${table.sqlStatement}'''
     return SqfEntityProvider(this).writeDatabase(data);
   }
 
+  Future<void> close() async {
+    return SqfEntityProvider(this).close();
+  }
+
   /// Run sql command List
   Future<BoolCommitResult> execSQLList(List<String> sql) async {
     return SqfEntityProvider(this).execSQLList(sql);
@@ -737,7 +748,6 @@ ${table.sqlStatement}'''
   Future<String> getDatabasePath() async {
     return await getDatabasesPath();
   }
-
 
   Future<void> batchStart() async {
     await SqfEntityProvider(this).batchStart();
